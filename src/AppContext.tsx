@@ -23,15 +23,25 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 	const [skills, setSkills] = useState<ISkill[]>([]);
 	const [message, setMessage] = useState('');
 
+	// "useQuery" in GraphQL is like axios in REST
 	const { loading, data } = useQuery(gql`
 		{
-			message
+			message,
+			jobs {
+				title
+			},
+			skills {
+				name,
+				description
+			}
 		}
 	`);
 
 	useEffect(() => {
 		if (!loading) {
 			setMessage(data.message);
+			setJobs(data.jobs);
+			setSkills(data.skills);
 		}
 	}, [loading]);
 
@@ -41,7 +51,7 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 				appTitle,
 				jobs,
 				skills,
-				message
+				message,
 			}}
 		>
 			{children}

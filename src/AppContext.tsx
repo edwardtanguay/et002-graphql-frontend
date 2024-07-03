@@ -27,6 +27,7 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 	const { loading, data } = useQuery(gql`
 		{
 			message,
+			colors,
 			jobs {
 				title
 			},
@@ -42,6 +43,7 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 			setMessage(data.message);
 			setJobs(data.jobs);
 			setSkills(data.skills);
+			console.log(data.colors);
 		}
 	}, [loading]);
 

@@ -13,9 +13,9 @@ export const PageInfo = () => {
 			<div className="content">
 				<div className="jobs">
 					<h2>{jobs.length} Jobs</h2>
-					{jobs.map(job => {
+					{jobs.map((job,index) => {
 						return (
-							<div className="job" key={job.id}>
+							<div className="job" key={index}>
 								<div className="title">{job.title}</div>
 							</div>
 						)
@@ -23,9 +23,9 @@ export const PageInfo = () => {
 				</div>
 				<div className="skills">
 					<h2>{skills.length} Skills</h2>
-					{skills.map(skill => {
+					{skills.map((skill, index) => {
 						return (
-							<div className="skill" key={skill.name}>
+							<div className="skill" key={index}>
 								<div className="item"><span className="name">{skill.name}</span> - {skill.description}</div>
 							</div>
 						)
